@@ -1,0 +1,22 @@
+<h1>My Tasks</h1>
+
+<ul><% @tasks.each do |task| %>
+  <li><%= link_to task.title, task_path(task) %></li>
+</ul>
+  <p> <%= link_to "Delete task", destroy_path(task), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %> </p>
+  <div class="form-check">
+  <% if task.completed  %>
+    <input class="form-checkinput" type="checkbox" value="true" id="flexCheckDefault"checked>
+    <label class="form-check-label" for="flexCheckDefault">
+    Completed
+    </label>
+    <% else %>
+    <input class="form-checkinput" type="checkbox" value="true" id="flexCheckDefault">
+    <label class="form-check-label" for="flexCheckDefault">
+    Completed
+    </label>
+  <% end %>
+</div>
+ <% end %>
+
+<p> <%= link_to "Add a task", tasks_new_path %></p>
